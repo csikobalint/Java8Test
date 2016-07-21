@@ -1,22 +1,22 @@
-package org.balint.excersice1;
+package org.balint.exercise1;
 
 /**
- * Created by Bálint on 2016. 07. 21..
+ * Created by Bálint on 2016. 07. 21.
  */
-public class Trader {
+class Trader {
     private final String name;
     private final String city;
 
-    public Trader(String name, String city) {
+    Trader(String name, String city) {
         this.name = name;
         this.city = city;
     }
 
-    public String getName() {
+    String getName() {
         return name;
     }
 
-    public String getCity() {
+    String getCity() {
         return city;
     }
 

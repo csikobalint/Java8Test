@@ -1,28 +1,28 @@
-package org.balint.excersice1;
+package org.balint.exercise1;
 
 /**
- * Created by Bálint on 2016. 07. 21..
+ * Created by Bálint on 2016. 07. 21.
  */
-public class Transaction {
+class Transaction {
     private final Trader trader;
     private final int year;
     private final int value;
 
-    public Transaction(Trader trader, int year, int value) {
+    Transaction(Trader trader, int year, int value) {
         this.trader = trader;
         this.year = year;
         this.value = value;
     }
 
-    public Trader getTrader() {
+    Trader getTrader() {
         return trader;
     }
 
-    public int getYear() {
+    int getYear() {
         return year;
     }
 
-    public int getValue() {
+    int getValue() {
         return value;
     }
 

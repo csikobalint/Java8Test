@@ -1,5 +1,9 @@
 package org.balint.chapter5;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -46,8 +50,8 @@ public class Further {
         System.out.println(emptyMax.orElse(-1));
 
 
-        System.out.println("########");
-        System.out.println("Numeric ranges");
+
+        header("Numeric ranges");
         IntStream evenNumbers = IntStream.range(0, 100).filter(n -> n % 2 == 0);
         evenNumbers.forEach(System.out::println);
         System.out.println("Pythageorean triples");
@@ -63,11 +67,37 @@ public class Further {
         pythagoreanTriples.limit(50).forEach(t ->
                 System.out.println(t[0] + " " + t[1] + " " + t[2])
         );
-        System.out.println("########");
-        System.out.println("Building streams");
+
+        header("Building streams");
         Stream<String> stringStream = Stream.of("alma", "a", "fa", "alatt");
         stringStream.map(String::toUpperCase).forEach(System.out::println);
 
+        header("Streams from files");
+        long uniqueWords = 0;
+        try(Stream<String> lines = Files.lines(Paths.get("C:\\Users\\eblicsi\\github\\Java8Test\\Java8Test\\src\\org\\balint\\chapter5\\data.txt"))){
+            uniqueWords = lines.flatMap(line -> Arrays.stream(line.split(" "))).distinct().count();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("uniqueWords = " + uniqueWords);
+
+        header("Iterate");
+        Stream.iterate(0,n -> n +2).limit(10).forEach(System.out::println);
+
+        header("Iterate Fibonacci tuples");
+        Stream.iterate(new int[]{0,1}, t-> new int[]{t[1], t[0] + t[1]}).limit(20).forEach(t -> System.out.println(t[0] +" " +  t[1]));
+
+        header("Generate");
+        Stream.generate(Math::random).limit(5).forEach(System.out::println);
 
     }
+
+    private static void header(String title) {
+        System.out.println("########");
+        System.out.println(title);
+    }
+
+
+
+
 }

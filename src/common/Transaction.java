@@ -1,29 +1,35 @@
-package org.balint.chapter5;
+package common;
 
 /**
  * Created by Bálint on 2016. 07. 21.
  */
-class Transaction {
+public class Transaction {
     private final Trader trader;
     private final int year;
     private final int value;
+    private final String currency;
 
-    Transaction(Trader trader, int year, int value) {
+    public Transaction(Trader trader, int year, int value, String currency) {
         this.trader = trader;
         this.year = year;
         this.value = value;
+        this.currency = currency;
     }
 
-    Trader getTrader() {
+    public Trader getTrader() {
         return trader;
     }
 
-    int getYear() {
+    public int getYear() {
         return year;
     }
 
-    int getValue() {
+    public int getValue() {
         return value;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
     @Override

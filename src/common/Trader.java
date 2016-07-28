@@ -1,22 +1,22 @@
-package org.balint.chapter5;
+package common;
 
 /**
  * Created by Bálint on 2016. 07. 21.
  */
-class Trader {
+public class Trader {
     private final String name;
     private final String city;
 
-    Trader(String name, String city) {
+    public Trader(String name, String city) {
         this.name = name;
         this.city = city;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
-    String getCity() {
+    public String getCity() {
         return city;
     }
 

@@ -1,4 +1,4 @@
-package org.balint.chapter5;
+package common;
 
 /**
  * Created by eblicsi on 7/24/2016.

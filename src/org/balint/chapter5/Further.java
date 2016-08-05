@@ -1,6 +1,7 @@
 package org.balint.chapter5;
 
 import common.Dish;
+import common.Dishes;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,33 +19,22 @@ import java.util.stream.Stream;
 public class Further {
     public static void main(String... args) {
 
-        List<Dish> menu = Arrays.asList(
-                new Dish("puffasztott rizs", 100),
-                new Dish("makosteszta", 600),
-                new Dish("youghurt", 30),
-                new Dish("sult hal", 800),
-                new Dish("borsoleves", 200),
-                new Dish("derelye", 500),
-                new Dish("pacal", 400),
-                new Dish("rizi-bizi", 120)
-        );
-
-        //non-effective due
-        int calories = menu.stream().map(Dish::getCalories).reduce(0, Integer::sum);
+       //non-effective due
+        int calories = Dishes.getDishes().stream().map(Dish::getCalories).reduce(0, Integer::sum);
         System.out.println("calories: " + calories);
 
         //more effective as uses IntStream
-        int calories2 = menu.stream().mapToInt(Dish::getCalories).sum();
+        int calories2 = Dishes.getDishes().stream().mapToInt(Dish::getCalories).sum();
         System.out.println("calories2: " + calories2);
 
         //converting a numeric stream to boxed
-        IntStream intStream = menu.stream().mapToInt(Dish::getCalories);
+        IntStream intStream = Dishes.getDishes().stream().mapToInt(Dish::getCalories);
         Stream<Integer> stream = intStream.boxed();
         System.out.println("########");
         stream.forEach(System.out::println);
         System.out.println("########");
 
-        OptionalInt maxCalories = menu.stream().mapToInt(Dish::getCalories).max();
+        OptionalInt maxCalories = Dishes.getDishes().stream().mapToInt(Dish::getCalories).max();
         System.out.println("max claories = " + maxCalories.orElse(-1));
         List<Dish> emptyMenu = new ArrayList<>();
         OptionalInt emptyMax = emptyMenu.stream().mapToInt(Dish::getCalories).max();
@@ -97,8 +87,4 @@ public class Further {
         System.out.println("########");
         System.out.println(title);
     }
-
-
-
-
 }

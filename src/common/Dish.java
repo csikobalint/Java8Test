@@ -19,4 +19,12 @@ public class Dish {
     public int getCalories() {
         return calories;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "name='" + name + '\'' +
+                ", calories=" + calories +
+                '}';
+    }
 }
